@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aynihälsan — Massage, Energimedicin &amp; Samtal</title>
+<meta name="description" content="Aynihälsan erbjuder massage, energimedicin och samtal i Stocka. Boka din tid direkt online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&family=Give+You+Glory&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EEE1;
+    --cream-soft:#FBF7EE;
+    --ink:#1C1510;
+    --ink-soft:var(--ink);
+    --ink-faint:var(--ink);
+    --rose:#E8A2AF;
+    --rose-deep:#C97C8B;
+    --gold:#E1B15F;
+    --gold-soft:#F3D9A6;
+    --plum:#372330;
+    --plum-soft:#4A2F41;
+    --line:rgba(28,21,16,.16);
+    --line-on-plum:rgba(246,238,225,.18);
+    --shadow:0 20px 44px -22px rgba(58,37,49,.38);
+    --r-lg:28px;
+    --r-md:16px;
+    --r-sm:10px;
+    --ff-display:'Fraunces', serif;
+    --ff-body:'Jost', sans-serif;
+    --ff-script:'Give You Glory', cursive;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--ff-body);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:var(--ff-display); font-weight:500; margin:0 0 .5em; color:var(--ink); }
+  p{ margin:0 0 1em; color:var(--ink-soft); }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; }
+
+  *:focus-visible{ outline:2px solid var(--rose-deep); outline-offset:3px; border-radius:4px; }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  section{
+    position:relative;
+    padding:110px 0;
+    scroll-margin-top:90px;
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center;
+    font-family:var(--ff-body); font-weight:500; font-size:.78rem;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--ink);
+    margin-bottom:1.1em;
+  }
+  .eyebrow::before{
+    content:''; display:inline-block; width:8px; height:8px; border-radius:50%;
+    margin-right:10px;
+    background:radial-gradient(circle at 35% 30%, var(--gold-soft), var(--rose-deep));
+    animation:pulseDot 3s ease-in-out infinite;
+  }
+  .on-plum .eyebrow{ color:var(--gold-soft); }
+
+  @keyframes pulseDot{ 0%,100%{ opacity:.55; transform:scale(1);} 50%{ opacity:1; transform:scale(1.35);} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:.5em;
+    padding:.95rem 1.9rem; border-radius:999px;
+    font-family:var(--ff-body); font-weight:500; font-size:.95rem; letter-spacing:.01em;
+    text-decoration:none; border:1px solid transparent; cursor:pointer;
+    transition:transform .35s ease, box-shadow .35s ease, background .35s ease, color .35s ease;
+  }
+  .btn-primary{ background:linear-gradient(135deg, var(--rose-deep), var(--gold)); color:#fff; box-shadow:var(--shadow); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 26px 48px -18px rgba(201,124,139,.55); }
+  .btn-ghost{ background:transparent; border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ background:rgba(43,33,28,.05); }
+  .btn-ghost.on-plum{ border-color:var(--line-on-plum); color:var(--cream); }
+  .btn-ghost.on-plum:hover{ background:rgba(246,238,225,.08); }
+  .btn[disabled]{ opacity:.4; cursor:not-allowed; box-shadow:none; transform:none; }
+  .btn-small{ padding:.6rem 1.2rem; font-size:.85rem; }
+  .btn-link{ background:none; border:none; color:var(--rose-deep); font-weight:500; cursor:pointer; padding:0; text-decoration:underline; text-underline-offset:3px; }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(246,238,225,.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{ max-width:1120px; margin:0 auto; padding:18px 28px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .wordmark{ font-family:var(--ff-script); font-size:2.4rem; font-weight:400; text-decoration:none; color:var(--ink); line-height:1; }
+  .wordmark .big-a{
+    font-family:var(--ff-script);
+    font-size:1.5em;
+    font-weight:400;
+    display:inline-block;
+    transform:scale(1.05);
+    transform-origin:left bottom;
+    margin-right:.02em;
+  }
+  .nav-links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .nav-links a{ text-decoration:none; font-size:.9rem; letter-spacing:.02em; color:var(--ink-soft); transition:color .25s ease; }
+  .nav-links a:hover{ color:var(--rose-deep); }
+  .nav-cta{ flex-shrink:0; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:24px; height:2px; background:var(--ink); margin:5px 0; transition:transform .3s ease, opacity .3s ease; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:80px; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; top:-220px; right:-180px; width:640px; height:640px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,162,175,.35), rgba(225,177,95,.12) 60%, transparent 72%);
+    filter:blur(10px); pointer-events:none;
+  }
+  .hero-inner{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
+  .hero-copy h1{ font-size:clamp(2.6rem, 4.6vw, 4rem); line-height:1.08; margin-bottom:.4em; }
+  .hero-copy h1 em{ font-style:italic; font-weight:400; color:var(--ink); }
+  .hero-copy .lede{ font-size:1.08rem; max-width:46ch; }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-top:1.6em; }
+
+  .logo-lockup{ display:block; width:min(400px, 86vw); margin:0 auto; overflow:visible; }
+  .svg-orb{
+    transform-box:fill-box; transform-origin:center;
+    animation:breathe 6s ease-in-out infinite;
+    filter:drop-shadow(0 30px 54px rgba(201,124,139,.45));
+  }
+  .svg-ring-group{ transform-box:fill-box; transform-origin:center; animation:spin 44s linear infinite; }
+  .svg-logo-img{ filter:drop-shadow(0 8px 18px rgba(58,37,49,.25)); }
+  .svg-wordmark{ font-family:var(--ff-script); font-size:78px; fill:var(--ink); }
+  .svg-wordmark .big-a-svg{ font-family:var(--ff-script); font-size:1.5em; font-weight:400; }
+  .svg-tagline{ font-family:var(--ff-script); font-size:30px; fill:var(--ink); letter-spacing:.5px; }
+  .breath-caption{
+    text-align:center; margin-top:16px;
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+  }
+
+  @keyframes breathe{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.045);} }
+  @keyframes spin{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+
+  /* ---------- About ---------- */
+  .about-inner{ max-width:680px; margin:0 auto; text-align:center; }
+  .about-inner h2{ font-size:clamp(1.9rem, 3vw, 2.6rem); }
+  .about-inner p{ font-size:1.04rem; }
+  .about-body{ text-align:left; margin-top:1.6em; }
+  .about-body p{ font-size:1.02rem; }
+  .about-sign{ margin-top:1.6em; font-family:var(--ff-script); color:var(--ink); font-size:1.9rem; text-align:center; }
+
+  .qero-quote{
+    font-family:var(--ff-display); font-style:italic; font-size:1.35rem; color:var(--ink);
+    text-align:center; max-width:50ch; margin:1.6em auto; padding:1.2em 0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+
+  .upcoming-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .upcoming-block{ text-align:center; }
+  .upcoming-block h2{ font-size:clamp(1.6rem, 2.4vw, 2rem); }
+  .upcoming-block p{ max-width:40ch; margin-left:auto; margin-right:auto; }
+
+  /* ---------- Services ---------- */
+  .services{ background:var(--cream-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .services-head{ max-width:620px; margin:0 auto 56px; text-align:center; }
+  .services-head h2{ font-size:clamp(1.9rem, 3vw, 2.6rem); }
+  .service-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .service-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
+    padding:38px 30px; text-align:left;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); }
+  .service-icon{ width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+    background:radial-gradient(circle at 35% 30%, var(--gold-soft), var(--rose)); }
+  .service-icon svg{ width:26px; height:26px; }
+  .service-card h3{ font-size:1.3rem; margin-bottom:.4em; }
+  .service-card p{ font-size:.96rem; margin-bottom:1.4em; }
+  .service-card a{ font-size:.9rem; font-weight:500; color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+  .service-card a:hover{ text-decoration:underline; }
+
+  /* ---------- Booking ---------- */
+  .booking-head{ max-width:640px; margin:0 auto 20px; text-align:center; }
+  .booking-head h2{ font-size:clamp(1.9rem, 3vw, 2.6rem); }
+  .booking-head .lede{ max-width:52ch; margin-left:auto; margin-right:auto; }
+
+  .steps-bar{
+    display:flex; justify-content:center; gap:8px; flex-wrap:wrap;
+    margin:36px 0 44px;
+  }
+  .steps-bar .step{
+    font-size:.78rem; letter-spacing:.06em; padding:.5em 1em; border-radius:999px;
+    border:1px solid var(--line); color:var(--ink-faint); background:var(--cream-soft);
+    transition:all .3s ease;
+  }
+  .steps-bar .step.active{ border-color:var(--rose-deep); color:var(--ink); background:#fff; font-weight:600; }
+  .steps-bar .step.done{ border-color:var(--gold); color:var(--ink); background:var(--gold-soft); }
+
+  .booking-panel{
+    background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
+    box-shadow:var(--shadow); padding:44px; max-width:760px; margin:0 auto;
+  }
+  .booking-summary{
+    display:none; align-items:center; gap:10px; flex-wrap:wrap;
+    font-size:.88rem; color:var(--ink-soft); background:var(--cream-soft);
+    border:1px dashed var(--line); border-radius:var(--r-sm); padding:12px 16px; margin-bottom:30px;
+  }
+  .booking-summary.show{ display:flex; }
+  .booking-summary strong{ color:var(--ink); font-weight:500; }
+
+  .stage{ }
+  .stage[hidden]{ display:none; }
+  .stage h3{ font-size:1.2rem; margin-bottom:1.1em; }
+
+  .service-choice-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  .choice-card{
+    text-align:left; background:var(--cream-soft); border:1.5px solid var(--line); border-radius:var(--r-md);
+    padding:20px; cursor:pointer; transition:all .25s ease; width:100%;
+  }
+  .choice-card:hover{ border-color:var(--rose); }
+  .choice-card.selected{ border-color:var(--rose-deep); background:linear-gradient(135deg, #fff, var(--cream-soft)); box-shadow:0 12px 26px -16px rgba(201,124,139,.5); }
+  .choice-card .name{ font-family:var(--ff-display); font-size:1.08rem; margin-bottom:.2em; display:block; }
+  .choice-card .meta{ font-size:.82rem; color:var(--ink-faint); }
+
+  .field{ margin-bottom:22px; }
+  .field label{ display:block; font-size:.85rem; font-weight:500; margin-bottom:.5em; color:var(--ink); }
+  .field input, .field textarea{
+    width:100%; padding:.85em 1em; border-radius:var(--r-sm); border:1.5px solid var(--line);
+    font-family:var(--ff-body); font-size:.96rem; color:var(--ink); background:var(--cream-soft);
+    transition:border-color .25s ease;
+  }
+  .field input:focus, .field textarea:focus{ border-color:var(--rose-deep); outline:none; }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .field-hint{ font-size:.78rem; color:var(--ink-faint); margin-top:.4em; }
+  .field-error{ font-size:.8rem; color:#B0435B; margin-top:.4em; display:none; }
+  .field.invalid input, .field.invalid textarea{ border-color:#B0435B; }
+  .field.invalid .field-error{ display:block; }
+
+  .date-row{ margin-bottom:26px; }
+  .date-row input[type="date"]{
+    padding:.8em 1em; border-radius:var(--r-sm); border:1.5px solid var(--line);
+    font-family:var(--ff-body); font-size:.96rem; background:var(--cream-soft); color:var(--ink);
+  }
+  .closed-note{ font-size:.86rem; color:#B0435B; margin-top:10px; display:none; }
+  .closed-note.show{ display:block; }
+
+  .slot-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(96px, 1fr)); gap:10px; margin-top:6px; }
+  .slot-btn{
+    padding:.7em .4em; border-radius:var(--r-sm); border:1.5px solid var(--line);
+    background:var(--cream-soft); font-size:.88rem; color:var(--ink); cursor:pointer; transition:all .2s ease;
+  }
+  .slot-btn:hover:not([disabled]){ border-color:var(--rose); }
+  .slot-btn.selected{ border-color:var(--rose-deep); background:linear-gradient(135deg, var(--rose-deep), var(--gold)); color:#fff; font-weight:500; }
+  .slot-btn[disabled]{ opacity:.35; text-decoration:line-through; cursor:not-allowed; }
+  .no-slots{ font-size:.9rem; color:var(--ink-faint); font-style:italic; }
+
+  .stage-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:32px; gap:16px; }
+
+  .confirm-card{ text-align:center; padding:10px 0 4px; }
+  .confirm-icon{
+    width:64px; height:64px; border-radius:50%; margin:0 auto 20px;
+    background:radial-gradient(circle at 35% 30%, var(--gold-soft), var(--rose-deep));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .confirm-card h3{ font-size:1.4rem; }
+  .confirm-details{ background:var(--cream-soft); border-radius:var(--r-md); padding:22px 26px; text-align:left; margin:26px 0; }
+  .confirm-details dl{ display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:0; }
+  .confirm-details dt{ font-size:.8rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); }
+  .confirm-details dd{ margin:0; font-size:.96rem; color:var(--ink); }
+  .confirm-ref{ font-family:var(--ff-display); font-size:1.1rem; color:var(--ink); }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact{ background:var(--plum); color:var(--cream); }
+  .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  .contact h2{ color:var(--cream); font-size:clamp(1.9rem, 3vw, 2.6rem); }
+  .contact p{ color:rgba(246,238,225,.72); }
+  .contact-list li{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line-on-plum); font-size:.98rem; }
+  .contact-list li:last-child{ border-bottom:none; }
+  .socials{ margin-top:24px; }
+  .socials a{ text-decoration:none; font-size:.92rem; border-bottom:1px solid var(--gold); padding-bottom:2px; }
+  .contact-note{
+    background:var(--plum-soft); border:1px solid var(--line-on-plum); border-radius:var(--r-md);
+    padding:24px 28px; font-size:.9rem; color:rgba(246,238,225,.78);
+  }
+  .contact-note strong{ color:var(--gold-soft); }
+
+  footer{ background:var(--plum); border-top:1px solid var(--line-on-plum); padding:26px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.8rem; color:rgba(246,238,225,.55); }
+
+  /* ---------- Reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-copy{ text-align:center; }
+    .hero-copy .lede{ margin:0 auto; }
+    .hero-actions{ justify-content:center; }
+    .logo-lockup{ margin-top:40px; }
+    .service-grid{ grid-template-columns:1fr; }
+    .service-choice-grid{ grid-template-columns:1fr; }
+    .contact-inner{ grid-template-columns:1fr; }
+    .upcoming-grid{ grid-template-columns:1fr; gap:56px; }
+  }
+  @media (max-width:720px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; background:var(--cream);
+      flex-direction:column; padding:18px 28px; gap:16px; border-bottom:1px solid var(--line);
+      display:none;
+    }
+    .nav.open .nav-links{ display:flex; }
+    .nav-toggle{ display:block; }
+    .nav-cta{ display:none; }
+    section{ padding:76px 0; }
+    .booking-panel{ padding:28px 20px; }
+    .stage-actions{ flex-direction:column-reverse; align-items:stretch; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top"><span class="big-a">A</span>ynihälsan</a>
+      <nav class="nav-links">
+        <a href="#om-oss">Om oss</a>
+        <a href="#tjanster">Tjänster</a>
+        <a href="#om-qeros">Om Qeros</a>
+        <a href="#boka">Boka tid</a>
+        <a href="#kurser">Kurser &amp; workshops</a>
+        <a href="#event">Kommande event</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="btn btn-primary btn-small nav-cta" href="#boka">Boka tid</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="hem">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Massage · Energimedicin · Samtal</p>
+          <h1>Kom hem <em>till dig själv.</em></h1>
+          <p class="lede">Ayni är ett ord på quechua, ett uråldrigt språk som kommer från Q'erofolket i de peruanska bergen.<br>Det betyder helig ömsesidighet.<br>Innebörden är att finna balans i livet, att ha rätt relation till allt.<br>När hjärta, hjärna och själ är i flöde skapas Ayni.</p>
+          <div class="hero-actions">
+            <a href="#boka" class="btn btn-primary">Boka tid</a>
+            <a href="#tjanster" class="btn btn-ghost">Se tjänster</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="logo-lockup" viewBox="0 0 440 620" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="orbGrad" cx="35%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#FCEFD3"/>
+                <stop offset="42%" stop-color="#F5C7CE"/>
+                <stop offset="72%" stop-color="#E8929F"/>
+                <stop offset="100%" stop-color="#C97C8B"/>
+              </radialGradient>
+              <path id="arcTop" d="M 20,320 A 200,200 0 0,1 420,320" fill="none"/>
+              <path id="arcBottom" d="M 20,320 A 200,200 0 0,0 420,320" fill="none"/>
+            </defs>
+
+            <g class="svg-ring-group">
+              <circle cx="220" cy="320" r="166" fill="none" stroke="rgba(225,177,95,.55)" stroke-width="1.5"/>
+              <circle cx="220" cy="154" r="3.5" fill="#E1B15F"/>
+            </g>
+
+            <circle class="svg-orb" cx="220" cy="320" r="150" fill="url(#orbGrad)"/>
+
+            <image href="logga.png" x="110" y="210" width="220" height="220" class="svg-logo-img"/>
+
+            <text class="svg-wordmark">
+              <textPath href="#arcTop" startOffset="50%" text-anchor="middle"><tspan class="big-a-svg">A</tspan>ynihälsan</textPath>
+            </text>
+            <text class="svg-tagline">
+              <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">Massage · Energimedicin · Samtal</textPath>
+            </text>
+          </svg>
+          <p class="breath-caption">andas in · andas ut</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OM OSS -->
+    <section class="about reveal" id="om-oss">
+      <div class="wrap about-inner">
+        <p class="eyebrow">Om Aynihälsan</p>
+        <h2>Ett rum för hela dig</h2>
+        <div class="about-body">
+          <p>Hos mig får du möjlighet att känna in vad just du behöver hjälp med. I en lugn och trygg miljö hittar vi vägen till balans, både i kropp, sinne och själ. Varje möte skräddarsys efter dina behov och önskemål.</p>
+          <p>Har du smärta och stelhet i dina muskler? Har du specifika problem i rygg, nacke eller någon annanstans? Då är du varmt välkommen till mig så hjälper jag dig genom massage.</p>
+          <p>Kämpar du med jobbiga tankar och behöver sitta ner en stund och ventilera dina tankar och funderingar? Jag lyssnar gärna och hjälper dig få klarhet och support för det du behöver stöd i.</p>
+          <p>Finns det tunga mönster i ditt liv som påverkar dig på flera plan? Det kan vara både fysiskt, psykiskt eller själsligt. Genom energimedicin och genom guidning hjälper jag dig att släppa tyngd som sitter fast i olika delar. Det kan vara känslor som sorg, ilska, rädsla. Det kan vara negativa tankar och mönster som gång på gång kommer tillbaka och påverkar dig och ditt liv på ett sätt som gör att du inte kan vara ditt bästa jag. När du släpper taget och låter något nytt få den platsen kommer du uppleva din verklighet från en ny plats. Du får nya verktyg som du själv kan arbeta med och det ger dig tillbaka kraften att själv välja ditt mående.</p>
+        </div>
+        <p class="about-sign">— Helena, Aynihälsan</p>
+      </div>
+    </section>
+
+    <!-- TJÄNSTER -->
+    <section class="services reveal" id="tjanster">
+      <div class="wrap">
+        <div class="services-head">
+          <p class="eyebrow">Tjänster</p>
+          <h2>Tre vägar till balans</h2>
+        </div>
+        <div class="service-grid">
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3A2531" stroke-width="1.6" stroke-linecap="round"><path d="M4 14c2-6 6-9 8-9s6 3 8 9c-2 3-5 5-8 5s-6-2-8-5Z"/><path d="M8 14c1-2 2.5-3 4-3s3 1 4 3"/></svg>
+            </div>
+            <h3>Massage</h3>
+            <p>Klassisk och avslappnande kroppsmassage som löser upp spänningar i muskler och nervsystem, anpassad efter dina behov för stunden.</p>
+            <a href="#boka" data-service="massage">Boka massage →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3A2531" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+            </div>
+            <h3>Energimedicin</h3>
+            <p>Ett mjukt, energetiskt arbete som stödjer kroppens egen förmåga att återfå balans, varva ner och läka i sin egen takt.</p>
+            <a href="#boka" data-service="energimedicin">Boka energimedicin →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3A2531" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16v10H9l-4 4V6Z"/></svg>
+            </div>
+            <h3>Samtal</h3>
+            <p>Ett lyssnande samtal i lugn takt, för dig som vill bearbeta något, reflektera högt eller hitta riktning framåt.</p>
+            <a href="#boka" data-service="samtal">Boka samtal →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OM QEROS -->
+    <section class="about reveal" id="om-qeros">
+      <div class="wrap about-inner">
+        <p class="eyebrow">Om Qeros</p>
+        <h2>Om Q'erofolket och traditionen</h2>
+        <div class="about-body">
+          <p>Denna tradition är en flera tusen år gammal visdom som qerofolket har förvaltat sedan inkariket föll för länge sedan. Deras energimedicin syftar till att finna harmoni i livet, med sig själv och andra. Att leva i flöde och harmoni med allt levande på jorden. Finns det obalans någonstans visar det sig i livet genom olika krämpor, besvär, tunga tankar och känslor. Genom olika tekniker och verktyg lyfter de bort blockeringar som kan sitta både i vår fysiska kropp, i sinnet och tankar och i våra känslor samt i vår energikropp, vårt energifält.</p>
+        </div>
+        <blockquote class="qero-quote">"Det är svårt att fylla en kopp som redan är full"</blockquote>
+        <div class="about-body">
+          <p>Med hjälp av denna uråldriga visdom kan koppen tömmas för att sedan fyllas på nytt. En ny känsla och ett nytt sätt att uppleva sin verklighet kan nu börja ta form. En plats av frid och lugn landar i kroppen och ger flöde till både hjärta, sinne &amp; själ.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOKA TID -->
+    <section class="booking reveal" id="boka">
+      <div class="wrap">
+        <div class="booking-head">
+          <p class="eyebrow">Boka tid</p>
+          <h2>Hitta en tid som passar</h2>
+          <p class="lede">Det här är en första version av bokningssystemet. Din bokning bekräftas ännu inte automatiskt via mejl, men du får en sammanfattning direkt här på sidan.</p>
+        </div>
+
+        <div class="steps-bar" id="stepsBar">
+          <span class="step" data-step="1">1. Tjänst</span>
+          <span class="step" data-step="2">2. Datum &amp; tid</span>
+          <span class="step" data-step="3">3. Dina uppgifter</span>
+          <span class="step" data-step="4">4. Klart</span>
+        </div>
+
+        <div class="booking-panel">
+
+          <div class="booking-summary" id="bookingSummary"></div>
+
+          <!-- Stage 1: tjänst -->
+          <div class="stage" id="stage-1">
+            <h3>Vad vill du boka?</h3>
+            <div class="service-choice-grid" id="serviceChoices"></div>
+          </div>
+
+          <!-- Stage 2: datum & tid -->
+          <div class="stage" id="stage-2" hidden>
+            <h3>Välj datum</h3>
+            <div class="date-row">
+              <input type="date" id="dateInput" aria-label="Välj datum">
+              <p class="closed-note" id="closedNote">Stängt på söndagar — välj en annan dag.</p>
+            </div>
+            <h3>Lediga tider</h3>
+            <div class="slot-grid" id="slotGrid"><p class="no-slots">Välj ett datum för att se lediga tider.</p></div>
+            <div class="stage-actions">
+              <button class="btn btn-ghost" data-back="1">← Tillbaka</button>
+              <button class="btn btn-primary" id="toStage3" disabled>Nästa →</button>
+            </div>
+          </div>
+
+          <!-- Stage 3: uppgifter -->
+          <div class="stage" id="stage-3" hidden>
+            <h3>Dina uppgifter</h3>
+            <div class="field" id="fieldName">
+              <label for="nameInput">Namn *</label>
+              <input type="text" id="nameInput" autocomplete="name" placeholder="För- och efternamn">
+              <p class="field-error">Skriv in ditt namn.</p>
+            </div>
+            <div class="field" id="fieldContact">
+              <label for="contactInput">E-post eller telefon *</label>
+              <input type="text" id="contactInput" autocomplete="email" placeholder="[email protected] eller 070-000 00 00">
+              <p class="field-error">Fyll i en e-postadress eller ett telefonnummer.</p>
+            </div>
+            <div class="field">
+              <label for="msgInput">Meddelande (valfritt)</label>
+              <textarea id="msgInput" placeholder="Något du vill att vi vet innan din tid?"></textarea>
+            </div>
+            <div class="stage-actions">
+              <button class="btn btn-ghost" data-back="2">← Tillbaka</button>
+              <button class="btn btn-primary" id="submitBooking">Bekräfta bokning</button>
+            </div>
+          </div>
+
+          <!-- Stage 4: klart -->
+          <div class="stage" id="stage-4" hidden>
+            <div class="confirm-card">
+              <div class="confirm-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h3>Din bokning är mottagen</h3>
+              <p>Vi hör av oss inom 24 timmar för att bekräfta din tid.</p>
+              <div class="confirm-details">
+                <dl>
+                  <dt>Bokningsnummer</dt><dd class="confirm-ref" id="confRef"></dd>
+                  <dt>Tjänst</dt><dd id="confService"></dd>
+                  <dt>Datum</dt><dd id="confDate"></dd>
+                  <dt>Tid</dt><dd id="confTime"></dd>
+                  <dt>Namn</dt><dd id="confName"></dd>
+                </dl>
+              </div>
+              <button class="btn btn-ghost" id="resetBooking">Boka en ny tid</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KURSER & EVENT -->
+    <section class="services reveal" id="kommande">
+      <div class="wrap upcoming-grid">
+        <div class="upcoming-block" id="kurser">
+          <p class="eyebrow">Kurser &amp; workshops</p>
+          <h2>Lär dig mer, tillsammans</h2>
+          <p>Kommer snart — håll utkik här för uppdateringar om kurser och workshops hos Aynihälsan.</p>
+        </div>
+        <div class="upcoming-block" id="event">
+          <p class="eyebrow">Kommande event</p>
+          <h2>Vad som är på gång</h2>
+          <p>Kommer snart — håll utkik här för uppdateringar om kommande event.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="contact reveal on-plum" id="kontakt">
+      <div class="wrap contact-inner">
+        <div>
+          <p class="eyebrow">Kontakt</p>
+          <h2>Hör av dig</h2>
+          <p>Har du frågor innan du bokar? Skriv eller ring gärna, så återkommer vi så snart vi kan.</p>
+          <ul class="contact-list">
+            <li>✉️ hej@aynihalsan.se</li>
+            <li>📞 070-000 00 00</li>
+            <li>📍 Stocka</li>
+          </ul>
+          <div class="socials"><a href="#">Följ Aynihälsan på Facebook →</a></div>
+        </div>
+        <div class="contact-note">
+          <p><strong>Om den här sidan:</strong> det här är en portfolio-version av Aynihälsans webbplats. Kontaktuppgifter, texter och bokningsflödet är utgångspunkter — innan lansering behöver bokningen kopplas till ett riktigt bekräftelsesystem (t.ex. mejl eller SMS) och texterna stämmas av med Aynihälsan.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Aynihälsan</span>
+      <span>Logga &amp; namn tillhör Aynihälsan</span>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Mobile nav ---------- */
+  var nav = document.getElementById('siteNav');
+  var navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      nav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+
+      /* Kurser & event ligger i samma sektion. På mobil ligger event
+         under kurser, vilket annars gör att ankaret hamnar väldigt långt ner. */
+      var href = a.getAttribute('href');
+      if(href === '#kurser' || href === '#event'){
+        e.preventDefault();
+        var section = document.getElementById('kommande');
+        section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block:'start' });
+        history.replaceState(null, '', href);
+      }
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, { threshold:.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Booking data ---------- */
+  var SERVICES = [
+    { id:'massage',       name:'Massage',       duration:60, desc:'60 min · Kroppsarbete' },
+    { id:'energimedicin', name:'Energimedicin', duration:60, desc:'60 min · Energiarbete' },
+    { id:'samtal',        name:'Samtal',        duration:45, desc:'45 min · Samtal' }
+  ];
+  var DAY_NAMES = ['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+  var MONTH_NAMES = ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+
+  var state = { service:null, date:'', time:'', name:'', contact:'', message:'' };
+
+  var stepsBarEls = document.querySelectorAll('#stepsBar .step');
+  var stages = { 1: document.getElementById('stage-1'), 2: document.getElementById('stage-2'), 3: document.getElementById('stage-3'), 4: document.getElementById('stage-4') };
+  var summaryEl = document.getElementById('bookingSummary');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function todayStr(){
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+  }
+  function maxDateStr(){
+    var d = new Date();
+    d.setDate(d.getDate() + 60);
+    return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+  }
+
+  function formatDateSwedish(dateStr){
+    var parts = dateStr.split('-').map(Number);
+    var d = new Date(parts[0], parts[1]-1, parts[2]);
+    return DAY_NAMES[d.getDay()] + ' ' + d.getDate() + ' ' + MONTH_NAMES[d.getMonth()];
+  }
+
+  function minutesToClock(mins){
+    return pad(Math.floor(mins/60)) + ':' + pad(mins % 60);
+  }
+
+  /* deterministic pseudo-random taken slots, based on date + service */
+  function seededRand(seed){
+    var h = 0;
+    for(var i=0;i<seed.length;i++){ h = (h*31 + seed.charCodeAt(i)) >>> 0; }
+    return function(){ h = (h*1664525 + 1013904223) >>> 0; return h / 4294967295; };
+  }
+
+  function getSlots(dateStr, service){
+    var duration = service.duration;
+    var start = 9*60, end = 17*60, lunchStart = 12*60, lunchEnd = 13*60;
+    var step = duration === 45 ? 45 : 60;
+    var raw = [];
+    for(var t = start; t + duration <= end; t += step){
+      var overlapsLunch = t < lunchEnd && (t + duration) > lunchStart;
+      if(!overlapsLunch) raw.push(t);
+    }
+    var rand = seededRand(dateStr + '-' + service.id);
+    return raw.map(function(t){ return { time:t, taken: rand() < 0.3 }; });
+  }
+
+  /* ---------- Render service choices ---------- */
+  var serviceChoicesEl = document.getElementById('serviceChoices');
+  SERVICES.forEach(function(svc){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'choice-card';
+    btn.setAttribute('data-service', svc.id);
+    btn.innerHTML = '<span class="name">' + svc.name + '</span><span class="meta">' + svc.desc + '</span>';
+    btn.addEventListener('click', function(){ selectService(svc.id); });
+    serviceChoicesEl.appendChild(btn);
+  });
+
+  function selectService(id){
+    state.service = id;
+    document.querySelectorAll('#serviceChoices .choice-card').forEach(function(c){
+      c.classList.toggle('selected', c.getAttribute('data-service') === id);
+    });
+    state.date = ''; state.time = '';
+    dateInput.value = '';
+    slotGrid.innerHTML = '<p class="no-slots">Välj ett datum för att se lediga tider.</p>';
+    toStage3.disabled = true;
+    updateSummary();
+    setTimeout(function(){ goToStage(2); }, reduceMotion ? 0 : 180);
+  }
+
+  /* links in service cards pre-select + scroll */
+  document.querySelectorAll('[data-service]').forEach(function(el){
+    if(el.tagName === 'A'){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        selectService(el.getAttribute('data-service'));
+        document.getElementById('boka').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        goToStage(1);
+        setTimeout(function(){ selectService(el.getAttribute('data-service')); }, 300);
+      });
+    }
+  });
+
+  /* ---------- Stage 2: date + slots ---------- */
+  var dateInput = document.getElementById('dateInput');
+  var slotGrid = document.getElementById('slotGrid');
+  var closedNote = document.getElementById('closedNote');
+  var toStage3 = document.getElementById('toStage3');
+
+  dateInput.min = todayStr();
+  dateInput.max = maxDateStr();
+
+  dateInput.addEventListener('change', function(){
+    var val = dateInput.value;
+    state.time = '';
+    toStage3.disabled = true;
+    if(!val){ return; }
+    var parts = val.split('-').map(Number);
+    var d = new Date(parts[0], parts[1]-1, parts[2]);
+    if(d.getDay() === 0){
+      closedNote.classList.add('show');
+      slotGrid.innerHTML = '';
+      state.date = '';
+      return;
+    }
+    closedNote.classList.remove('show');
+    state.date = val;
+    renderSlots();
+  });
+
+  function renderSlots(){
+    slotGrid.innerHTML = '';
+    var svc = SERVICES.find(function(s){ return s.id === state.service; });
+    if(!svc || !state.date) return;
+    var slots = getSlots(state.date, svc);
+    if(!slots.length){
+      slotGrid.innerHTML = '<p class="no-slots">Inga tider tillgängliga den här dagen.</p>';
+      return;
+    }
+    slots.forEach(function(slot){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'slot-btn';
+      btn.textContent = minutesToClock(slot.time);
+      if(slot.taken){
+        btn.disabled = true;
+      } else {
+        btn.addEventListener('click', function(){
+          state.time = minutesToClock(slot.time);
+          document.querySelectorAll('.slot-btn').forEach(function(b){ b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          toStage3.disabled = false;
+          updateSummary();
+        });
+      }
+      slotGrid.appendChild(btn);
+    });
+  }
+
+  /* ---------- Stage navigation ---------- */
+  function goToStage(n){
+    Object.keys(stages).forEach(function(key){
+      stages[key].hidden = Number(key) !== n;
+    });
+    stepsBarEls.forEach(function(el){
+      var s = Number(el.getAttribute('data-step'));
+      el.classList.toggle('active', s === n);
+      el.classList.toggle('done', s < n);
+    });
+    updateSummary();
+  }
+
+  function updateSummary(){
+    if(!state.service){ summaryEl.classList.remove('show'); return; }
+    var svc = SERVICES.find(function(s){ return s.id === state.service; });
+    var parts = ['<span>Du bokar:</span> <strong>' + svc.name + '</strong>'];
+    if(state.date){ parts.push('<strong>' + formatDateSwedish(state.date) + '</strong>'); }
+    if(state.time){ parts.push('<strong>kl. ' + state.time + '</strong>'); }
+    summaryEl.innerHTML = parts.join(' · ');
+    summaryEl.classList.add('show');
+  }
+
+  document.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click', function(){ goToStage(Number(btn.getAttribute('data-back'))); });
+  });
+
+  toStage3.addEventListener('click', function(){ goToStage(3); });
+
+  /* ---------- Stage 3: form + submit ---------- */
+  var nameInput = document.getElementById('nameInput');
+  var contactInput = document.getElementById('contactInput');
+  var msgInput = document.getElementById('msgInput');
+  var fieldName = document.getElementById('fieldName');
+  var fieldContact = document.getElementById('fieldContact');
+
+  document.getElementById('submitBooking').addEventListener('click', function(){
+    var valid = true;
+    if(!nameInput.value.trim()){ fieldName.classList.add('invalid'); valid = false; } else { fieldName.classList.remove('invalid'); }
+    var contactVal = contactInput.value.trim();
+    var looksValid = contactVal.includes('@') || contactVal.replace(/[^0-9]/g,'').length >= 6;
+    if(!looksValid){ fieldContact.classList.add('invalid'); valid = false; } else { fieldContact.classList.remove('invalid'); }
+    if(!valid) return;
+
+    state.name = nameInput.value.trim();
+    state.contact = contactVal;
+    state.message = msgInput.value.trim();
+
+    var svc = SERVICES.find(function(s){ return s.id === state.service; });
+    document.getElementById('confRef').textContent = genRef();
+    document.getElementById('confService').textContent = svc.name;
+    document.getElementById('confDate').textContent = formatDateSwedish(state.date);
+    document.getElementById('confTime').textContent = 'kl. ' + state.time;
+    document.getElementById('confName').textContent = state.name;
+
+    goToStage(4);
+  });
+
+  function genRef(){
+    var d = new Date();
+    var rand = Math.random().toString(36).slice(2,5).toUpperCase();
+    return 'AH-' + String(d.getFullYear()).slice(2) + pad(d.getMonth()+1) + pad(d.getDate()) + '-' + rand;
+  }
+
+  document.getElementById('resetBooking').addEventListener('click', function(){
+    state = { service:null, date:'', time:'', name:'', contact:'', message:'' };
+    document.querySelectorAll('.choice-card').forEach(function(c){ c.classList.remove('selected'); });
+    dateInput.value = '';
+    slotGrid.innerHTML = '<p class="no-slots">Välj ett datum för att se lediga tider.</p>';
+    nameInput.value = ''; contactInput.value = ''; msgInput.value = '';
+    fieldName.classList.remove('invalid'); fieldContact.classList.remove('invalid');
+    toStage3.disabled = true;
+    summaryEl.classList.remove('show');
+    goToStage(1);
+    document.getElementById('boka').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+
+  goToStage(1);
+})();
+</script>
+</body>
+</html>
